@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/nastia-h8.github.io/goit-react-hw-06-phonebook/static/css/main.cd2e038f.css",
-    "main.js": "/nastia-h8.github.io/goit-react-hw-06-phonebook/static/js/main.3363c500.js",
-    "index.html": "/nastia-h8.github.io/goit-react-hw-06-phonebook/index.html",
-    "main.cd2e038f.css.map": "/nastia-h8.github.io/goit-react-hw-06-phonebook/static/css/main.cd2e038f.css.map",
-    "main.3363c500.js.map": "/nastia-h8.github.io/goit-react-hw-06-phonebook/static/js/main.3363c500.js.map"
+    "main.css": "/goit-react-hw-06-phonebook/static/css/main.cd2e038f.css",
+    "main.js": "/goit-react-hw-06-phonebook/static/js/main.f54eb6e9.js",
+    "index.html": "/goit-react-hw-06-phonebook/index.html",
+    "main.cd2e038f.css.map": "/goit-react-hw-06-phonebook/static/css/main.cd2e038f.css.map",
+    "main.f54eb6e9.js.map": "/goit-react-hw-06-phonebook/static/js/main.f54eb6e9.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.3363c500.js"
+    "static/js/main.f54eb6e9.js"
   ]
 }
