@@ -49,18 +49,18 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const handleSubmit = (values, { resetForm }) => {
-    const isNameInContactList = checkContactName(contacts, values.name);
-    const isNumberInContactList = checkContactNumber(contacts, values.number);
+  const handleSubmit = (contact, { resetForm }) => {
+    const isNameInContactList = checkContactName(contacts, contact.name);
+    const isNumberInContactList = checkContactNumber(contacts, contact.number);
 
     if (isNameInContactList) {
-      toast.error(`${values.name} is already in contacts`);
+      toast.error(`${contact.name} is already in contacts`);
     } else if (isNumberInContactList) {
       toast.error(
         `This number is already saved in contacts as ${isNumberInContactList.name}`
       );
     } else {
-      dispatch(addContact(values));
+      dispatch(addContact(contact));
       resetForm();
     }
   };

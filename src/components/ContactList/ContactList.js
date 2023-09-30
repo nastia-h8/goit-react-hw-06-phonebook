@@ -1,11 +1,10 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getContacts, getFilter } from 'redux/selectors';
 import { deleteContact } from 'redux/contactsSlice';
 
 import { Message } from 'components/Message/Message';
-import { CONTACTS_LS_KEY } from 'constants/localeStorage';
 
 import { AiOutlineDelete } from 'react-icons/ai';
 import { List, Item, Name, Button, NumberWrapper } from './ContactList.styled';
@@ -14,10 +13,6 @@ export function ContactList() {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    localStorage.setItem(CONTACTS_LS_KEY, JSON.stringify(contacts));
-  }, [contacts]);
 
   const visibleContacts = useMemo(() => {
     return contacts.filter(contact =>

@@ -1,20 +1,11 @@
 import { nanoid } from 'nanoid';
 import { createSlice } from '@reduxjs/toolkit';
-import { CONTACTS_LS_KEY } from 'constants/localeStorage';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-const getInitialContacts = () => {
-  const savedContacts = localStorage.getItem(CONTACTS_LS_KEY);
-  return (
-    JSON.parse(savedContacts) ?? [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ]
-  );
+const contactsInitialState = {
+  contactList: [],
 };
-
-const contactsInitialState = getInitialContacts();
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -22,23 +13,36 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.contactList.push(action.payload);
       },
-      prepare(newContact) {
+      prepare({ name, number }) {
         return {
           payload: {
             id: nanoid(),
-            name: newContact.name,
-            number: newContact.number,
+            name,
+            number,
           },
         };
       },
     },
     deleteContact(state, action) {
-      return state.filter(contact => contact.id !== action.payload);
+      const idx = state.contactList.findIndex(
+        contact => contact.id === action.payload
+      );
+      state.contactList.splice(idx, 1);
     },
   },
 });
 
 export const { addContact, deleteContact } = contactsSlice.actions;
-export const contactsReducer = contactsSlice.reducer;
+
+const persistConfig = {
+  key: 'contacts',
+  storage,
+  whitelist: ['contactList'],
+};
+
+export const contactsReducer = persistReducer(
+  persistConfig,
+  contactsSlice.reducer
+);
