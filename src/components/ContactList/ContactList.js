@@ -1,7 +1,8 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/actions';
+
 import { getContacts, getFilter } from 'redux/selectors';
+import { deleteContact } from 'redux/contactsSlice';
 
 import { Message } from 'components/Message/Message';
 import { CONTACTS_LS_KEY } from 'constants/localeStorage';

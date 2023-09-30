@@ -3,8 +3,9 @@ import * as yup from 'yup';
 import toast from 'react-hot-toast';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/actions';
+
 import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/contactsSlice';
 import { regex } from 'utils/regex';
 import {
   checkContactName,

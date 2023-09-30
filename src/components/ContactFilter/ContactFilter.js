@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { changeNameFilter } from 'redux/actions';
+import { changeNameFilter } from 'redux/filterSlice';
 
 import {
   Wrapper,
